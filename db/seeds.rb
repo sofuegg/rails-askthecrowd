@@ -21,16 +21,16 @@ users = User.create([
 ])
 
 questions = Question.create([
-  { title: '明天参加毕业礼, 穿那一条裙子好看?', creator_id: User.first.id, active: true },
-  { title: '你喜欢那一款包装?', creator_id: User.first.id, active: true },
-  { title: '我们小区的垃圾收集点设那里比较好?', creator_id: User.first.id, active: true },
-  { title: '公司周年聚餐, 共70人, 那间餐厅好?', creator_id: User.first.id, active: true },
-  { title: '我是Wework的小姐姐, 下星期一的早餐, 你们要吃马来西亚的, 还是法式的?', creator_id: User.first.id, active: true },
-  { title: '交大和复旦文学系都取录了我, 去那间?', creator_id: User.second.id, active: true },
-  { title: '公司新的名片设计好了, 同事们给给意见', creator_id: User.second.id, active: true },
-  { title: 'Which pair of shoes should go?', creator_id: User.last.id, active: true },
-  { title: "I'm from Canada, 22. I really like the culture of China and thinking to go here this November to study to learn Chinese. What the bestt place to go? Tks so much!", creator_id: User.last.id, active: true },
-  { title: '急需要钱, 只冇20万, 投那一只股票?' , creator_id: User.last.id, active: true },
+  { title: '明天参加毕业礼, 穿那一条裙子好看?', user: User.first, active: true },
+  { title: '你喜欢那一款包装?', user: User.first, active: true },
+  { title: '我们小区的垃圾收集点设那里比较好?', user: User.first, active: true },
+  { title: '公司周年聚餐, 共70人, 那间餐厅好?', user: User.first, active: true },
+  { title: '我是Wework的小姐姐, 下星期一的早餐, 你们要吃马来西亚的, 还是法式的?', user: User.first, active: true },
+  { title: '交大和复旦文学系都取录了我, 去那间?', user: User.second, active: true },
+  { title: '公司新的名片设计好了, 同事们给给意见', user: User.second, active: true },
+  { title: 'Which pair of shoes should go?', user: User.last, active: true },
+  { title: "I'm from Canada, 22. I really like the culture of China and thinking to go here this November to study to learn Chinese. What the bestt place to go? Tks so much!", user: User.last, active: true },
+  { title: '急需要钱, 只冇20万, 投那一只股票?' , user: User.last, active: true },
 ])
 
 Question.all.each do |q|
@@ -39,8 +39,8 @@ Question.all.each do |q|
     { title: 'B', question: q },
   ])
   answers = Answer.create([
-    { user_id: rand(1..10), choice: q.chocies.first, question: q }
-    { user_id: rand(1..10), choice: q.chocies.last, question: q }
+    { user_id: rand(1..10), choice: q.chocies.first, question: q },
+    { user_id: rand(1..10), choice: q.chocies.last, question: q },
     { user_id: rand(1..10), choice: q.chocies.last, question: q }
   ])
 end
