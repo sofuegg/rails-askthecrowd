@@ -12,9 +12,7 @@ class Api::V1::AnswersController < Api::V1::BaseController
     @answer.save
   end
 
-
   private
-
 
   def answer_params
     params.require(:answer).permit( :user_id, :choice_id, :question_id )
