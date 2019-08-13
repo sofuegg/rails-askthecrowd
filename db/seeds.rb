@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Answer.delete_all
+Choice.delete_all
+Question.delete_all
+User.delete_all
+
 users = User.create([
   { nickname: 'Yu.Yc', gender: 'M' },
   { nickname: '知足常乐', gender: 'M' },
@@ -21,27 +26,31 @@ users = User.create([
 ])
 
 questions = Question.create([
-  { title: '明天参加毕业礼, 穿那一条裙子好看?', creator_id: User.first.id, active: true },
-  { title: '你喜欢那一款包装?', creator_id: User.first.id, active: true },
-  { title: '我们小区的垃圾收集点设那里比较好?', creator_id: User.first.id, active: true },
-  { title: '公司周年聚餐, 共70人, 那间餐厅好?', creator_id: User.first.id, active: true },
-  { title: '我是Wework的小姐姐, 下星期一的早餐, 你们要吃马来西亚的, 还是法式的?', creator_id: User.first.id, active: true },
-  { title: '交大和复旦文学系都取录了我, 去那间?', creator_id: User.second.id, active: true },
-  { title: '公司新的名片设计好了, 同事们给给意见', creator_id: User.second.id, active: true },
-  { title: 'Which pair of shoes should go?', creator_id: User.last.id, active: true },
-  { title: "I'm from Canada, 22. I really like the culture of China and thinking to go here this November to study to learn Chinese. What the bestt place to go? Tks so much!", creator_id: User.last.id, active: true },
-  { title: '急需要钱, 只冇20万, 投那一只股票?' , creator_id: User.last.id, active: true },
+  { title: '明天参加毕业礼, 穿那一条裙子好看?', user_id: User.first.id, active: true },
+  { title: '你喜欢那一款包装?', user_id: User.first.id, active: true },
+  { title: '我们小区的垃圾收集点设那里比较好?', user_id: User.first.id, active: true },
+  { title: '公司周年聚餐, 共70人, 那间餐厅好?', user_id: User.first.id, active: true },
+  { title: '我是Wework的小姐姐, 下星期一的早餐, 你们要吃马来西亚的, 还是法式的?', user_id: User.first.id, active: true },
+  { title: '交大和复旦文学系都取录了我, 去那间?', user_id: User.second.id, active: true },
+  { title: '公司新的名片设计好了, 同事们给给意见', user_id: User.second.id, active: true },
+  { title: 'Which pair of shoes should go?', user_id: User.last.id, active: true },
+  { title: "I'm from Canada, 22. I really like the culture of China and thinking to go here this November to study to learn Chinese. What the bestt place to go? Tks so much!", user_id: User.last.id, active: true },
+  { title: '急需要钱, 只有20万, 投那一只股票?' , user_id: User.last.id, active: true },
 ])
 
+userids = User.all.map do |u|
+  u.id
+end
+
 Question.all.each do |q|
-  chocies = Choice.create([
-    { title: 'A', question: q },
-    { title: 'B', question: q },
+  choices = Choice.create([
+    { text: 'A', question: q },
+    { text: 'B', question: q },
   ])
   answers = Answer.create([
-    { user_id: rand(1..10), choice: q.chocies.first, question: q }
-    { user_id: rand(1..10), choice: q.chocies.last, question: q }
-    { user_id: rand(1..10), choice: q.chocies.last, question: q }
+    { user_id: userids.sample, choice: q.choices.first, question: q },
+    { user_id: userids.sample, choice: q.choices.last, question: q },
+    { user_id: userids.sample, choice: q.choices.last, question: q }
   ])
 end
 
