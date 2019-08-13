@@ -1,6 +1,6 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
 
-  skip_before_Action :verify_authencity_token, only: %i[create]
+  skip_before_action :verify_authenticity_token, only: %i[create]
   before_action :get_question, only: %i[show]
 
   def index
@@ -27,11 +27,11 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   private
 
   def get_question
-    @question = Question.find[params[:id]]
+    @question = Question.find(params[:id])
   end
 
   def question_params
-    @params.require(:question).permit( :title, :photo, :active, :user_id )
+    params.require(:question).permit( :title, :photo, :active, :user_id )
   end
 
 end
