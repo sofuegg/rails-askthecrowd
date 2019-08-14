@@ -44,8 +44,8 @@ end
 
 Question.all.each do |q|
   choices = Choice.create([
-    { text: 'A', question: q },
-    { text: 'B', question: q },
+    { text: 'This is answer A provided by creator of the question', question: q },
+    { text: 'This is answer B provided by creator of the question', question: q },
   ])
   answers = Answer.create([
     { user_id: userids.sample, choice: q.choices.first, question: q },
