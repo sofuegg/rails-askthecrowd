@@ -12,9 +12,16 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def create
-    @question = Question.new(question_params)
-    @question.save
-    render :show
+    @question = Question.create({ title: all_params[:title], photo: all_params[:photoq] })
+    @choice1 = Choice.create({ text: all_params[:texta], photo: all_params[:photoa], question_id: @question.id })
+    @choice2 = Choice.create({ text: all_params[:textb], photo: all_params[:photob], question_id: @question.id })
+
+    # @choices = Choice.new(choices_params)
+    # @choices[0].question = @question
+    # @choices[1].question = @question
+    # @choices[0].save
+    # @choices[1].save
+    # render :show
   end
 
   # def result_to_my_question
@@ -29,9 +36,17 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   def get_question
     @question = Question.find(params[:id])
   end
-
-  def question_params
-    params.require(:question).permit( :title, :photo, :active, :user_id )
+  
+  def all_params
+    params.permit( :title, :photoq, :texta, :photoa, :textb, :photob )
   end
+
+  # def question_params
+  #   params.require(:question).permit( :title, :photo, :active, :user_id, :choices, :text )
+  # end
+
+  # def choices_params
+  #   params.permit(:choices, array: [:text, :photo])
+  # end
 
 end
