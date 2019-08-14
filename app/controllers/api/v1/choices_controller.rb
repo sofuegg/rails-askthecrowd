@@ -14,7 +14,6 @@ class Api::V1::ChoicesController < Api::V1::BaseController
   end
 
   def result_to_my_question
-    statistics
   end
 
   private
