@@ -99,6 +99,7 @@ Question.create({ title: "I'm from Canada, 22. I really like the culture of Chin
 Choice.create({ text: 'Chengdu', photo: '', question: Question.last })
 Choice.create({ text: 'Shanghai', photo: '', question: Question.last })
 
+# userids is an array with id, this is because .map would change the original array into a new array.
 userids = User.all.map do |u|
   u.id
 end
