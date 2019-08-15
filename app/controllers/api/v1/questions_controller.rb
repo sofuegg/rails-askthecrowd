@@ -12,26 +12,19 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def create
-    @question = Question.new(question_params)
-    @question.save
-    render :show
+    @question = Question.create({ title: all_params[:title], photo: all_params[:photoq], user_id: all_params[:userid] })
+    @choice1 = Choice.create({ text: all_params[:texta], photo: all_params[:photoa], question_id: @question.id })
+    @choice2 = Choice.create({ text: all_params[:textb], photo: all_params[:photob], question_id: @question.id })
   end
-
-  # def result_to_my_question
-  #   no_of_answers_to_this_question = @question.answers.count
-  #   @choice_one = Choice.find[params[:id]]
-  #   no_of_answers_to_choice_one = @choice_one.answers.count
-  #   no_of_answers_to_choice_one/no_of_answers_to_this_question
-  # end
 
   private
 
   def get_question
     @question = Question.find(params[:id])
   end
-
-  def question_params
-    params.require(:question).permit( :title, :photo, :active, :user_id )
+  
+  def all_params
+    params.permit( :title, :photoq, :texta, :photoa, :textb, :photob, :userid, :__webviewId__, :format, :question )
   end
 
 end
