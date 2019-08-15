@@ -38,6 +38,7 @@ questions = Question.create([
   { title: '急需要钱, 只有20万, 投那一只股票?' , user_id: User.last.id, active: true },
 ])
 
+# userids is an array with id, this is because .map would change the original array into a new array.
 userids = User.all.map do |u|
   u.id
 end
