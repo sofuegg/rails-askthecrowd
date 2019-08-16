@@ -9,6 +9,7 @@ class Api::V1::AnswersController < Api::V1::BaseController
 
   def create
     @answer = Answer.new(answer_params)
+    puts "-------------------#{@answer.valid?}"
     @answer.save
   end
 
