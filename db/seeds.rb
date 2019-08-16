@@ -104,12 +104,12 @@ userids = User.all.map do |u|
   u.id
 end
 
-20.times do 
+20.times do
   q = Question.all.sample
   Answer.create({ user_id: userids.sample, choice: q.choices.first, question: q})
 end
 
-20.times do 
+20.times do
   q = Question.all.sample
   Answer.create({ user_id: userids.sample, choice: q.choices.last, question: q})
 end
