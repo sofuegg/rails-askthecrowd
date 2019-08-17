@@ -9,6 +9,8 @@ class Api::V1::QuestionsController < Api::V1::BaseController
 
   def show
     @question
+    @choice1=@question.choices.first
+    @choice2=@question.choices.last
   end
 
   def create
