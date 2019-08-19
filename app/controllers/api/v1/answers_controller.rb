@@ -1,5 +1,4 @@
 class Api::V1::AnswersController < Api::V1::BaseController
-
   skip_before_action :verify_authenticity_token, only: %i[create]
   # before_action :get_question, only: %i[poll_stats]
 
