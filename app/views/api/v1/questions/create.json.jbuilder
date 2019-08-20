@@ -1,4 +1,3 @@
-
 json.question_info do
   json.extract! @question, :id, :title, :photo, :active
   json.choice_one @choice1, :id, :text, :photo

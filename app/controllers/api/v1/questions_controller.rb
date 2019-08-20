@@ -35,10 +35,17 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def create
-    @question = Question.create({ title: all_params[:title], photo: all_params[:photoq], user_id: all_params[:userid] })
-    @choice1 = Choice.create({ text: all_params[:texta], photo: all_params[:photoa], question_id: @question.id })
-    @choice2 = Choice.create({ text: all_params[:textb], photo: all_params[:photob], question_id: @question.id })
+    @question = Question.new({ title: all_params[:title], photo: all_params[:photoq] })
+    @user = User.find(all_params[:userid])
+    @question.user = @user
+    @choice1 = Choice.new({ text: all_params[:texta], photo: all_params[:photoa] })
+    @choice2 = Choice.new({ text: all_params[:textb], photo: all_params[:photob] })
+    @choice1.question = @question
+    @choice2.question = @question
     # render json: @question
+    unless @question.save && @choice1.save && @choice2.save
+      render json: {q: @question.errors.full_messages, c1: @choice1.errors.full_messages, c2: @choice2.errors.full_messages}
+    end
   end
 
   private
@@ -48,7 +55,7 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def all_params
-    params.permit( :title, :photoq, :texta, :photoa, :textb, :photob, :userid, :__webviewId__, :format, :question)
+    params.permit(:title, :photoq, :texta, :photoa, :textb, :photob, :userid)
   end
 
 end
