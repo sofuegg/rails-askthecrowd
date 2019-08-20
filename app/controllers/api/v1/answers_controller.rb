@@ -8,7 +8,12 @@ class Api::V1::AnswersController < Api::V1::BaseController
 
   def create
     @answer = Answer.new(answer_params)
-    @answer.save
+    @answer.save!
+    @question = @answer.question
+    # p question
+    @choice1=@question.choices.first
+    @choice2=@question.choices.last
+
   end
 
   private
