@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "/questions/my_responses/:user_id", to: "questions#my_responses"
       get "/questions/asked_questions/:user_id", to: "questions#asked_questions"
-      resources :questions, only: [ :index, :show, :create ] do
+      resources :questions, only: [ :index, :show, :create, :update ] do
         resources :choices, only: [ :create, :index, :result_to_my_question ] do
           get "/", to: "choices#result_to_my_question"
         end
