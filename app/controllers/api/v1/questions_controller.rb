@@ -1,24 +1,18 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
-  before_action :authenticate_v1_user, only: %i[my_responses, asked_question]
-  skip_before_action :verify_authenticity_token, only: %i[create]
-  before_action :get_question, only: %i[show]
+  before_action :authenticate_v1_user, only: %i[my_responses asked_question]
+  skip_before_action :verify_authenticity_token, only: %i[create update]
+  before_action :get_question, only: [:show, :update]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
+    @active_questions = @questions.select {|question| question.active == true}
+    @active_questions[0..20]
   end
 
   def my_responses
     @questions = Question.all
     @user = User.find(params[:user_id])
-    # p "user inside my responses"
-    # p @user
     @my_responses = @questions.select {|question| question.answers.any?{|answer| answer.user_id = @user.id}}
-    # @my_responses.each do |r|
-    #   if r.answers.any?{|a| a.user_id == 22}
-    #     p "answer with user id 22 found"
-    #   end
-    # end
-    # p @my_responses.size
   end
 
   def asked_questions
@@ -29,9 +23,8 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def show
-    @question
-    @choice1=@question.choices.first
-    @choice2=@question.choices.last
+    @choice1 = @question.choices.first
+    @choice2 = @question.choices.last
   end
 
   def create
@@ -46,6 +39,13 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     unless @question.save && @choice1.save && @choice2.save
       render json: {q: @question.errors.full_messages, c1: @choice1.errors.full_messages, c2: @choice2.errors.full_messages}
     end
+  end
+
+  def update
+    @question.active = true
+    @question.save
+    @choice1 = @question.choices.first
+    @choice2 = @question.choices.last
   end
 
   private
