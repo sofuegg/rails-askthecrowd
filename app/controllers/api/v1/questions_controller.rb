@@ -1,6 +1,6 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
-  before_action :authenticate_v1_user, only: %i[my_responses asked_question]
-  skip_before_action :verify_authenticity_token, only: %i[create update]
+  # before_action :authenticate_v1_user, only: [:my_responses, :asked_question]
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
   before_action :get_question, only: [:show, :update]
 
   def index
@@ -10,16 +10,18 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def my_responses
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
+    p @questions
     @user = User.find(params[:user_id])
-    @my_responses = @questions.select {|question| question.answers.any?{|answer| answer.user_id = @user.id}}
+    p@user
+    @my_responses = @questions.select {|question| question.answers.any?{|answer| answer.user_id == @user.id}}
   end
 
   def asked_questions
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
     @user = User.find(params[:user_id])
     p @user
-    p @questions_asked = @questions.select{ |question| question.user_id = @user.id }
+    p @questions_asked = @questions.select{ |question| question.user_id == @user.id }
   end
 
   def show
