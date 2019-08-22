@@ -59,6 +59,16 @@ Question.create({ title: '我是的身材属于微胖型, 穿右边的会不会�
 Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b43f6d5e86271efbfd3e/2012101309583538733.jpg', question: Question.last })
 Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/664b7d66028f29b06e75/fashion-show-1524743577.jpg', question: Question.last })
 
+User.create({ nickname: '珍妮', gender: 'F' })
+Question.create({ title: '姐妹们, 那个颜色好看呀? 不能输给我的同事!!', user: User.last, active: true })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/dcd0ac9bad4e2b611a79/WeChat%20%E5%9C%96%E7%89%87_20190820173618.jpg', question: Question.last })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/a9a841a978ea9b1145dd/WeChat%20%E5%9C%96%E7%89%87_20190820173625.jpg', question: Question.last })
+
+User.create({ nickname: '知足常乐', gender: 'M' })
+Question.create({ title: '好看吗? 买那一件?', user: User.last, active: true })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/411fbd1b8016eb352471/Image%20from%20iOS%20%281%29.png', question: Question.last })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/316c7ddf18ecd583e815/Image%20from%20iOS%20%282%29.png', question: Question.last })
+
 User.create({ nickname: 'Auspex', gender: 'M' })
 Question.create({ title: '我买了对新的牌子布鞋, 左边是官网的, 右边是我买的, 所以我买了假货吗?', user: User.last, active: true })
 Choice.create({ text: '官网', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/0098a72c8ca576c4f42a/4015801_1500.jpg', question: Question.last })
@@ -86,8 +96,8 @@ Choice.create({ text: '蓝色', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/dbf3
 
 User.create({ nickname: 'LULU', gender: 'F' })
 Question.create({ title: "今年夏季, 那款裙子会走上最新潮流?", user: User.last, active: true })
-Choice.create({ text: 'Chengdu', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b9d9ecc26633faf7a00a/703567.jpg', question: Question.last })
-Choice.create({ text: 'Shanghai', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/2823c64f0e776c43264c/Leonard-2013.jpg', question: Question.last })
+Choice.create({ text: 'Milan', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b9d9ecc26633faf7a00a/703567.jpg', question: Question.last })
+Choice.create({ text: 'Paris', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/2823c64f0e776c43264c/Leonard-2013.jpg', question: Question.last })
 
 # userids is an array with id, this is because .map would change the original array into a new array.
 userids = User.all.map do |u|
