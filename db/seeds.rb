@@ -54,50 +54,40 @@ User.delete_all
 #   ])
 # end
 
+User.create({ nickname: '知足常乐', gender: 'F' })
+Question.create({ title: '我是的身材属于微胖型, 穿右边的会不会好看, 还是左边较好??', user: User.last, active: true })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b43f6d5e86271efbfd3e/2012101309583538733.jpg', question: Question.last })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/664b7d66028f29b06e75/fashion-show-1524743577.jpg', question: Question.last })
+
+User.create({ nickname: 'Auspex', gender: 'M' })
+Question.create({ title: '我买了对新的牌子布鞋, 左边是官网的, 右边是我买的, 所以我买了假货吗?', user: User.last, active: true })
+Choice.create({ text: '官网', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/0098a72c8ca576c4f42a/4015801_1500.jpg', question: Question.last })
+Choice.create({ text: '我买的', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/c686a533f594b531b9c6/4015301_1500.jpg', question: Question.last })
+
+User.create({ nickname: 'AC', gender: 'M' })
+Question.create({ title: '我开服装店想进货, 大家猜那一件会比较好卖?', user: User.last, active: true })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/f0bca788f028c05109e3/TB2BMQ0i_qWBKNjSZFAXXanSpXa_%21%21662831292.jpg', question: Question.last })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b48cdb68cf866af169cf/TB2yTH2BYSYBuNjSspfXXcZCpXa_%21%212102385428-0-item_pic.jpg_430x430q90.jpg', question: Question.last })
+
 User.create({ nickname: 'Yu.Yc', gender: 'F' })
 Question.create({ title: '明天参加毕业礼, 穿那一条裙子好看?', user: User.last, active: true })
 Choice.create({ text: '红色', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/5054fd3ea9dbfa874da7/190219sl-1589-62503b-red.jpg', question: Question.last })
 Choice.create({ text: '黄色', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/d95b31927f164fb42208/180403_afl_hollie_misc8429-5.jpg', question: Question.last })
 
-User.create({ nickname: '知足常乐', gender: 'M' })
-Question.create({ title: '你喜欢那一款包装?', user: User.last, active: true })
-Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/d9c89fd7452a7429de6d/71YMV5-wNwL._SL1500_.jpg', question: Question.last })
-Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/92e63d2ea42213d9d1c0/477c968fd026d4d785b3917fb32cdaf4.jpg', question: Question.last })
-
-User.create({ nickname: '珍妮', gender: 'F' })
-Question.create({ title: '我们小区的垃圾收集点设那里比较好?', user: User.last, active: true })
-Choice.create({ text: '后闸出入口空地', photo: '', question: Question.last })
-Choice.create({ text: '停车场地库', photo: '', question: Question.last })
-
-User.create({ nickname: 'XYMaggie', gender: 'F' })
-Question.create({ title: '公司周年聚餐, 共70人, 那间餐厅好?', user: User.last, active: true })
-Choice.create({ text: '蜀大侠', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/ef0e83431171cf575855/wKgBEFtVyK2AErDTADzCTbKWEhY10.jpeg', question: Question.last })
-Choice.create({ text: '大龙燚', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/3007dcdea711faec6d14/wKgBs1bQMrWASgp3AAO2H_9ZYAo00.jpeg', question: Question.last })
-
-User.create({ nickname: 'Auspex', gender: 'F' })
-Question.create({ title: '我是Wework的小姐姐, 下星期一的早餐, 你们要吃马来西亚的, 还是法式的?', user: User.last, active: true })
-Choice.create({ text: '马来西亚', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/6493a095368a27213f1f/food-658715_1920.jpg', question: Question.last })
-Choice.create({ text: '法式', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/a5f884f6832c018d9364/1336705.jpg', question: Question.last })
-
-User.create({ nickname: 'AC', gender: 'M' })
-Question.create({ title: '交大和复旦文学系都取录了我, 去那间?', user: User.last, active: true })
-Choice.create({ text: '交大', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/57de666d7550c1f374f1/ef50ed7e-7f05-451e-9e35-0f7c4cdff7f3.jpg', question: Question.last })
-Choice.create({ text: '复旦', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/df439b0b60bbd844267c/B07A00_P_02_01.jpg', question: Question.last })
-
-User.create({ nickname: 'Chee MS', gender: 'M' })
-Question.create({ title: '公司新的名片设计好了, 同事们给给意见', user: User.last, active: true })
-Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/5c0fae4b91020e107f0c/b5257b_b505df57ce5b43969e40b92344989059_mv2_d_1326_1422_s_2.jpg', question: Question.last })
-Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/f984a991f5a15f7e5f3a/96bbb0b6a00d63eed845.png', question: Question.last })
+User.create({ nickname: 'Chee MS', gender: 'F' })
+Question.create({ title: '想送男友一副太阳眼镜, 请你们给给意见', user: User.last, active: true })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/585fda9716deec435233/download.jpg', question: Question.last })
+Choice.create({ text: '', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/5ca1964696bbb1ffe770/eqyey03035_barrett_p_xkks_frt1.jpg', question: Question.last })
 
 User.create({ nickname: 'Pavel L. 庞龙', gender: 'M' })
-Question.create({ title: 'Which pair of shoes to buy', user: User.last, active: true })
-Choice.create({ text: 'Air Jordan XXXI', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/99606f5a2fef8f96a606/d2cf46a5000717e0.jpg', question: Question.last })
-Choice.create({ text: 'Air Jordan XXXI Black-purple', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/e82176d6273f2f6d1a75/b51b5eaf86c245ca.jpg', question: Question.last })
+Question.create({ title: '蓝色和灰色西服二选一去明天面试, 那个更好?', user: User.last, active: true })
+Choice.create({ text: '灰色', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/60c26b02b58b0eee63af/images.jpg', question: Question.last })
+Choice.create({ text: '蓝色', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/dbf3f9f4a33205dcee98/567a89b197fb1.jpg', question: Question.last })
 
 User.create({ nickname: 'LULU', gender: 'F' })
-Question.create({ title: "I'm from Canada, 22. I really like the culture of China and thinking to go here this November to study to learn Chinese. What the bestt place to go? Tks so much!", user: User.last, active: true })
-Choice.create({ text: 'Chengdu', photo: '', question: Question.last })
-Choice.create({ text: 'Shanghai', photo: '', question: Question.last })
+Question.create({ title: "今年夏季, 那款裙子会走上最新潮流?", user: User.last, active: true })
+Choice.create({ text: 'Chengdu', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/b9d9ecc26633faf7a00a/703567.jpg', question: Question.last })
+Choice.create({ text: 'Shanghai', photo: 'http://lc-qinkssxt.cn-n1.lcfile.com/2823c64f0e776c43264c/Leonard-2013.jpg', question: Question.last })
 
 # userids is an array with id, this is because .map would change the original array into a new array.
 userids = User.all.map do |u|
