@@ -5,4 +5,5 @@ json.question_info do
   json.choice_two @choice2, :id, :text, :photo
   json.percentage_one @question.statistics[0]
   json.percentage_two @question.statistics[1]
+  json.existence @what_happens_after_click
 end
