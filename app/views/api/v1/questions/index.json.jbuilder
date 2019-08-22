@@ -1,5 +1,5 @@
 json.question_lists do
-  json.array! @active_questions do |question|
+  json.array! @questions_not_answered do |question|
     json.extract! question, :id, :title, :photo, :active
     # json.user_info question.user.nickname
     json.choice_info question.choices

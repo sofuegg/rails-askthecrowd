@@ -5,16 +5,25 @@ class Api::V1::QuestionsController < Api::V1::BaseController
 
   def index
     @questions = Question.all.order(created_at: :desc)
+    p @questions
     @active_questions = @questions.select {|question| question.active == true}
-    @active_questions[0..20]
+    p @active_questions
+    @user = User.find(params[:user_id])
+    p@user
+    @questions_answered = @questions.select {|question| question.answers.any?{|answer| answer.user_id == @user.id}}
+    @questions_not_answered = @active_questions - @questions_answered
+    @questions_not_answered[0..20]
   end
 
   def my_responses
-    @questions = Question.all.order(created_at: :desc)
+    @questions = Question.eager_load(:answers).order("answers.created_at DESC")
+    # @questions = Question.all.order(created_at: :desc)
     p @questions
     @user = User.find(params[:user_id])
     p@user
     @my_responses = @questions.select {|question| question.answers.any?{|answer| answer.user_id == @user.id}}
+    # @my_responses = my_responses.eager_load(:answers).order("answers.created_at DESC") #where(category: "your category", listings: { active: true }).first(2)
+
   end
 
   def asked_questions
@@ -25,6 +34,12 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   end
 
   def show
+    @user = User.find(params[:user_id])
+    if @question.answers.any?{|answer| answer.user_id == @user.id}
+      @what_happens_after_click = true
+    else
+      @what_happens_after_click = false
+    end
     @choice1 = @question.choices.first
     @choice2 = @question.choices.last
   end

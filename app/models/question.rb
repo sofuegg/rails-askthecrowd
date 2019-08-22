@@ -4,7 +4,9 @@ class Question < ApplicationRecord
   NUMBER_OF_PERMITTED_CHOICES = 2
   has_many :choices, dependent: :destroy, before_add: :validate_choice_limit
 
-
+  def questions_with_most_recent_answers
+    Question.include(:answers).ordered_by_most_recent
+  end
 
   def statistics
     choice_one = self.choices.first
